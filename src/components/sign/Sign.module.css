@@ -1,0 +1,38 @@
+.container {
+    display: grid;
+    width: 100%;
+    text-align: center;
+}
+
+.itemOne {
+    margin-top: 50px;
+    height: 200px;
+    width: 100%;
+}
+
+.input {
+    border-radius: 7px;
+    border: 0;
+    height: 30px;
+    width: 200px;
+    font-size: 15px;
+    margin: 10px;
+    background-color: rgba( 255, 255, 255, 0.5 );
+}
+
+::placeholder {
+    color: white;
+    font: bold;
+}
+
+.button {
+    border-radius: 10px;
+    border: 0;
+    height: 30px;
+    width: 90px;
+    margin: 10px;
+    background-color: tomato;
+    color: white;
+    font-size: 13px;
+    font: bold;
+}
