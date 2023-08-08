@@ -25,6 +25,9 @@ function SignUp() {
         const url = `${myEnv.MESERVATION_URL}/v1/api/users/signup/`;
         const data = formData;
 
+        console.log(`url=${url}`);
+        console.log(`data=${data}`);
+
         await axios.post(url, data)
             .then((response) => {
                 console.log('회원가입 성공:', response.data);

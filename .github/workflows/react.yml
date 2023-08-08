@@ -60,6 +60,6 @@ jobs:
           sudo docker pull ${{ secrets.DOCKERHUB_ID }}/front-meservation:${{ steps.commit.outputs.short }}
           sudo docker run \
             -e "REACT_APP_MESERVATION_URL=${{ secrets.REACT_APP_MESERVATION_URL }}" \
-            --name front-meservation -p 80:80 -d ${{ secrets.DOCKERHUB_ID }}/front-meservation:${{ steps.commit.outputs.short }}
+            --name front-meservation -p 3000:3000 -d ${{ secrets.DOCKERHUB_ID }}/front-meservation:${{ steps.commit.outputs.short }}
 
     
