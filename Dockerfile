@@ -1,10 +1,6 @@
 # nginx 이미지를 사용합니다. 뒤에 tag가 없으면 latest 를 사용합니다.
 FROM nginx
 
-# GitHub Actions에서 전달한 환경 변수를 이미지 내부에서 설정
-ARG REACT_APP_MESERVATION_URL
-ENV REACT_APP_MESERVATION_URL=$REACT_APP_MESERVATION_URL
-
 # root 에 app 폴더를 생성
 RUN mkdir /app
 

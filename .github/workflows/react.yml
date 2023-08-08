@@ -21,6 +21,8 @@ jobs:
       run: npm install
       
     - name: build
+      env:
+        REACT_APP_MESERVATION_URL: ${{ secrets.REACT_APP_MESERVATION_URL }}
       run: npm run build
 
     # get commit hash id
@@ -30,7 +32,7 @@ jobs:
         prefix: "commit-"
 
     - name: Build the Docker image
-      run: docker build --build-arg REACT_APP_MESERVATION_URL=${{ secrets.REACT_APP_MESERVATION_URL }} -t ${{ secrets.DOCKERHUB_ID }}/front-meservation:${{ steps.commit.outputs.short }} .
+      run: docker build -t ${{ secrets.DOCKERHUB_ID }}/front-meservation:${{ steps.commit.outputs.short }} .
 
     - name: Docker image latest tagging
       run: docker tag ${{ secrets.DOCKERHUB_ID }}/front-meservation:${{ steps.commit.outputs.short }} ${{ secrets.DOCKERHUB_ID }}/front-meservation:latest
@@ -59,7 +61,6 @@ jobs:
           sudo docker rm front-meservation
           sudo docker pull ${{ secrets.DOCKERHUB_ID }}/front-meservation:${{ steps.commit.outputs.short }}
           sudo docker run \
-            -e REACT_APP_MESERVATION_URL=${{ secrets.REACT_APP_MESERVATION_URL }} \
             --name front-meservation -p 3000:3000 -d ${{ secrets.DOCKERHUB_ID }}/front-meservation:${{ steps.commit.outputs.short }}
 
     
