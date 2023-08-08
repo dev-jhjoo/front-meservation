@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 import style from './Sign.module.css';
+
+import myEnv from '../../config/MyEnv';
 
 
 function SignIn() {
@@ -18,22 +20,28 @@ function SignIn() {
         setPassword(e.target.value);
       };
     
-      const handleLogin = () => {
-        // 로그인 처리를 수행하는 함수 (예: API 요청 등)
-        const url = "http://52.79.216.11:8000/v1/api/users/login/";
-        const data = {"email":username, password};
+      const handleLogin = async (e) => {
+        // 폼의 기본 동작인 페이지 리로드를 막음
+        e.preventDefault(); 
 
-        axios.post(url, data)
+        // 로그인 처리를 수행하는 함수 (예: API 요청 등)
+        const url = `${myEnv.MESERVATION_URL}/v1/api/users/login/`;
+        const data = {'email':username, password};
+
+        const res = await axios.post(url, data)
             .then((response) => {
-                // 회원가입 성공 후 처리하는 로직을 추가해주세요.
+                // 로그인 성공 후 처리하는 로직을 추가해주세요.
                 alert('로그인 성공:', response.data);
-                // console.log('로그인 성공:', response.data);
+                console.log('로그인 성공:', response.data);
+                return response;
             })
             .catch((error) => {
-                // 회원가입 오류 처리하는 로직을 추가해주세요.
+                // 로그인 오류 처리하는 로직을 추가해주세요.
                 alert('로그인 오류:', error);
-                // console.log('로그인 오류:', error);
+                console.log('로그인 오류:', error);
             });
+
+        console.log(res);
       };
 
     return (
