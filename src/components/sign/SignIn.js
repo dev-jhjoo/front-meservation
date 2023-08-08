@@ -28,6 +28,9 @@ function SignIn() {
         const url = `${myEnv.MESERVATION_URL}/v1/api/users/login/`;
         const data = {'email':username, password};
 
+        console.log(`url=${url}`);
+        console.log(`data=${data}`);
+
         const res = await axios.post(url, data)
             .then((response) => {
                 // 로그인 성공 후 처리하는 로직을 추가해주세요.
