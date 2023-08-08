@@ -22,7 +22,7 @@ function SignUp() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const url = `${myEnv.MESERVATION_URL}/v1/api/users/signup/`;
+        const url = `${myEnv.REACT_APP_MESERVATION_URL}/v1/api/users/signup/`;
         const data = formData;
 
         console.log(`url=${url}`);

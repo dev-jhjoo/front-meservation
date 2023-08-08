@@ -25,7 +25,7 @@ function SignIn() {
         e.preventDefault(); 
 
         // 로그인 처리를 수행하는 함수 (예: API 요청 등)
-        const url = `${myEnv.MESERVATION_URL}/v1/api/users/login/`;
+        const url = `${myEnv.REACT_APP_MESERVATION_URL}/v1/api/users/login/`;
         const data = {'email':username, password};
 
         console.log(`url=${url}`);
