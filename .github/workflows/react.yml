@@ -20,7 +20,7 @@ jobs:
     - run: npm test
 
     # get commit hash id
-    - id: Get commit hash
+    - id: commit
       uses: pr-mpt/actions-commit-hash@v2
       with:
         prefix: "commit-"
