@@ -130,5 +130,5 @@ dist
 .pnp.*
 
 # my
-package-lock.json
+# package-lock.json
 build/
