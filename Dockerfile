@@ -23,8 +23,7 @@ COPY ./nginx.conf /etc/nginx/conf.d
 EXPOSE 3000
 
 # GitHub Actions에서 전달한 환경 변수를 이미지 내부에서 설정
-ARG REACT_APP_MESERVATION_URL
-ENV REACT_APP_MESERVATION_URL=$REACT_APP_MESERVATION_URL
+ENV REACT_APP_MESERVATION_URL=${REACT_APP_MESERVATION_URL}
 
 # container 실행 시 자동으로 실행할 command. nginx 시작함
 CMD ["nginx", "-g", "daemon off;"]
