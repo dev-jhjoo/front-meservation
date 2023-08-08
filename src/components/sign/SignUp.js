@@ -1,6 +1,8 @@
+import axios from 'axios';
 import { useState } from 'react';
 import style from './Sign.module.css';
-import axios from 'axios';
+import myEnv from '../../config/MyEnv';
+
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -20,10 +22,10 @@ function SignUp() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const url = "http://52.79.216.11:8000/v1/api/users/signup/";
+        const url = `${myEnv.MESERVATION_URL}/v1/api/users/signup/`;
         const data = formData;
 
-        axios.post(url, data)
+        await axios.post(url, data)
             .then((response) => {
                 console.log('회원가입 성공:', response.data);
                 // 회원가입 성공 후 처리하는 로직을 추가해주세요.

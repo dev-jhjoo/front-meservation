@@ -1,2 +1,11 @@
 # front-meservation
-react project
+meservation fort project
+
+
+# run
+```
+> npm i
+> npm start
+```
+
+
