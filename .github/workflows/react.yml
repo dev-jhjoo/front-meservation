@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Checkout source code
       uses: actions/checkout@v3
+      with:
+        build_args: REACT_APP_MESERVATION_URL=${{ secrets.REACT_APP_MESERVATION_URL }}
 
     - name: Set node version
       uses: actions/setup-node@v3
@@ -59,7 +61,6 @@ jobs:
           sudo docker rm front-meservation
           sudo docker pull ${{ secrets.DOCKERHUB_ID }}/front-meservation:${{ steps.commit.outputs.short }}
           sudo docker run \
-            -e "REACT_APP_MESERVATION_URL=${{ secrets.REACT_APP_MESERVATION_URL }}" \
             --name front-meservation -p 3000:3000 -d ${{ secrets.DOCKERHUB_ID }}/front-meservation:${{ steps.commit.outputs.short }}
 
     
